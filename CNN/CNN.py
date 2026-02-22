@@ -34,11 +34,22 @@ val_ds  = tf.keras.utils.image_dataset_from_directory(
 class_names = train_ds.class_names
 print(class_names)
 
-plt.figure(figsize=(10, 10))
-for images, labels in train_ds.take(1):
-  for i in range(9):
-    ax = plt.subplot(3, 3, i + 1)
-    plt.imshow(images[i].numpy().astype("uint8"))
-    plt.title(class_names[labels[i]])
-    plt.axis("off")
+# two ways to define the model
+"""
+model = keras.Sequential(
+    [
+        layers.Dense(2, activation="relu"),
+        layers.Dense(3, activation="relu"),
+        layers.Dense(4),
+    ]
+)
 
+model = keras.Sequential()
+model.add(layers.Dense(2, activation="relu"))
+model.add(layers.Dense(3, activation="relu"))
+model.add(layers.Dense(4))
+
+# remove a layers
+model.pop()
+print(len(model.layers))  # 2
+"""
