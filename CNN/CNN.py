@@ -34,22 +34,4 @@ val_ds  = tf.keras.utils.image_dataset_from_directory(
 class_names = train_ds.class_names
 print(class_names)
 
-# two ways to define the model
-"""
-model = keras.Sequential(
-    [
-        layers.Dense(2, activation="relu"),
-        layers.Dense(3, activation="relu"),
-        layers.Dense(4),
-    ]
-)
 
-model = keras.Sequential()
-model.add(layers.Dense(2, activation="relu"))
-model.add(layers.Dense(3, activation="relu"))
-model.add(layers.Dense(4))
-
-# remove a layers
-model.pop()
-print(len(model.layers))  # 2
-"""
