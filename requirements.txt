@@ -2,3 +2,5 @@ kagglehub
 torch
 torchvision
 torchaudio
+pandas
+numpy
