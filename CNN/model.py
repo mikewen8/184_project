@@ -1,20 +1,39 @@
 #https://www.tensorflow.org/guide/keras/sequential_model
 #--------Explanation on what hte Sequential model does
+# two ways to define the model
 """
-When to use a Sequential model
-A Sequential model is appropriate for a plain stack of layers where each layer has exactly one input tensor and one output tensor.
-
-Schematically, the following Sequential model:
-# Define Sequential model with 3 layers
 model = keras.Sequential(
     [
-        layers.Dense(2, activation="relu", name="layer1"),
-        layers.Dense(3, activation="relu", name="layer2"),
-        layers.Dense(4, name="layer3"),
+        layers.Dense(2, activation="relu"),
+        layers.Dense(3, activation="relu"),
+        layers.Dense(4),
     ]
 )
-# Call model on a test input
-x = tf.ones((3, 3))
-y = model(x)
-from keras documentation
+
+model = keras.Sequential()
+model.add(layers.Dense(2, activation="relu"))
+model.add(layers.Dense(3, activation="relu"))
+model.add(layers.Dense(4))
+
+# remove a layers
+model.pop()
+print(len(model.layers))  # 2
+
+# simple terms
+https://www.geeksforgeeks.org/deep-learning/difference-between-ann-cnn-and-rnn/
+explaines the covolutions
+https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html
+
+model = Sequential([
+  layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
+  layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(64, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Flatten(),
+  layers.Dense(128, activation='relu'),
+  layers.Dense(num_classes)
+])
 """
