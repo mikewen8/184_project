@@ -23,4 +23,17 @@ print(len(model.layers))  # 2
 https://www.geeksforgeeks.org/deep-learning/difference-between-ann-cnn-and-rnn/
 explaines the covolutions
 https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html
+
+model = Sequential([
+  layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
+  layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(64, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Flatten(),
+  layers.Dense(128, activation='relu'),
+  layers.Dense(num_classes)
+])
 """
